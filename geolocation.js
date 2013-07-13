@@ -1,5 +1,4 @@
-var
-getCurrentPosition = function() {
+var getCurrentPosition = function() {
 var map = document.getElementById('map');
 var success = function(pos) { 
 var text = "<div>Latitude: " + pos.coords.latitude + 
@@ -8,24 +7,15 @@ var text = "<div>Latitude: " + pos.coords.latitude +
 document.getElementById(
 'cur_position').innerHTML = text;
 console.log(text);
-map.style.display =
-'block';
+map.style.display ='block';
 var mapwidth = 270; // a mungy compromise between the 2 sizes
 var mapheight = 210; // since we can't get w / h dynamically
-map.src =
-"http://maps.googleapis.com/maps/api/staticmap?center=" + 
-pos.coords.latitude +
-"," + pos.coords.longitude + 
-"&zoom=14&size=" + mapwidth + "x" + mapheight + "&maptype=roadmap&markers=color:green%7C" +
-pos.coords.latitude +
-"," + pos.coords.longitude + "&sensor=false";
-};
+map.src ="http://maps.googleapis.com/maps/api/staticmap?center=" + 
+pos.coords.latitude +"," + pos.coords.longitude + "&zoom=14&size=" + mapwidth + "x" + mapheight + "&maptype=roadmap&markers=color:green%7C" +
+pos.coords.latitude +"," + pos.coords.longitude + "&sensor=false";};
 var fail = function(error) {
 document.getElementById(
-'cur_position').innerHTML = "Error getting geolocation: " + error.code;
-console.log(
-"Error getting geolocation: code=" + error.code + " message=" + error.message);
-};
+'cur_position').innerHTML = "Error getting geolocation: " + error.code;console.log("Error getting geolocation: code=" + error.code + " message=" + error.message);};
 map.style.display =
 'none';
 document.getElementById(
