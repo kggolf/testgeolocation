@@ -14,9 +14,6 @@ function getCurrentPosition() {
 var map = document.getElementById('map');
 
   function success(pos) { 
-  /*var text = "<div>Latitude: " + pos.coords.latitude + "<br/>" + "Longitude: " + pos.coords.longitude + "<br/>" + "Accuracy: " + pos.coords.accuracy + "m<br/>" + "</div>";
-  document.getElementById('cur_position').innerHTML = text;
-  console.log(text);*/
   map.style.display ='block';
   var mapwidth = 250; // a mungy compromise between the 2 sizes
   var mapheight = 250; // since we can't get w / h dynamically
@@ -63,38 +60,16 @@ document.getElementById('cur_position').innerHTML = "Error getting geolocation: 
 console.log("Error getting geolocation: code=" + error.code + " message=" + error.message);
 };
 
-/*
-function toggleWatchPosition() { 
-if (watchID) {
-console.log(
-"Stopped watching position");
-clearWatch();// sets watchID = null;
-}
-else { 
-document.getElementById(
-'map').style.display = 'none';
-document.getElementById(
-'cur_position').innerHTML = "Watching geolocation . . .";
-console.log("Watching geolocation . . .");
-var options = { frequency: 3000, maximumAge: 5000, timeout: 5000, enableHighAccuracy: true };
-watchID = navigator.geolocation.watchPosition(wsuccess, wfail, options);
-}
-};
-*/
 </script>
 
 
 </head>
 <body>
 <h2>Geolocation</h2>
-
-<a class="btn deux" onclick="toggleWatchPosition();">Toggle</a>
 <a class="btn deux" onclick="getCurrentPosition();">Get Current</a>
 <div class="result-block">
 <span id="cur_position"></span>
 </div>
 <img id="map" alt="Location Map"/> 
-</div>
-</div>
 </body> 
 </html>
