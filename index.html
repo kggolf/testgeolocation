@@ -13,25 +13,26 @@
 function getCurrentPosition() {
 var map = document.getElementById('map');
 
-/*function success(pos) { 
-var text = "<div>Latitude: " + pos.coords.latitude + "<br/>" + "Longitude: " + pos.coords.longitude + "<br/>" + "Accuracy: " + pos.coords.accuracy + "m<br/>" + "</div>";
-document.getElementById('cur_position').innerHTML = text;
-console.log(text);
-map.style.display ='block';
-var mapwidth = 270; // a mungy compromise between the 2 sizes
-var mapheight = 210; // since we can't get w / h dynamically
-map.src ="http://maps.googleapis.com/maps/api/staticmap?center=" + 
-pos.coords.latitude +"," + pos.coords.longitude + "&zoom=14&size=" + mapwidth + "x" + mapheight + "&maptype=roadmap&markers=color:green%7C" +
-pos.coords.latitude +"," + pos.coords.longitude + "&sensor=false";
-};*/
+  function success(pos) { 
+  /*var text = "<div>Latitude: " + pos.coords.latitude + "<br/>" + "Longitude: " + pos.coords.longitude + "<br/>" + "Accuracy: " + pos.coords.accuracy + "m<br/>" + "</div>";
+  document.getElementById('cur_position').innerHTML = text;
+  console.log(text);*/
+  map.style.display ='block';
+  var mapwidth = 500; // a mungy compromise between the 2 sizes
+  var mapheight = 500; // since we can't get w / h dynamically
+  map.src ="http://maps.googleapis.com/maps/api/staticmap?center=" + 
+  pos.coords.latitude +"," + pos.coords.longitude + "&zoom=14&size=" + mapwidth + "x" + mapheight + "&maptype=roadmap&markers=color:green%7C" +
+  pos.coords.latitude +"," + pos.coords.longitude + "&sensor=false";
+  };
 
-function fail(error) {
-document.getElementById('cur_position').innerHTML = "Error getting geolocation: " + error.code;console.log("Error getting geolocation: code=" + error.code + " message=" + error.message);};
-map.style.display ='none';
-document.getElementById('cur_position').innerHTML = "Getting geolocation . . .";
-console.log("Getting geolocation . . .");
-navigator.geolocation.getCurrentPosition(success, fail);
+  function fail(error) {
+  document.getElementById('cur_position').innerHTML = "Error getting geolocation: " + error.code;console.log("Error getting geolocation: code=" + error.code + " message=" + error.message);};
+  map.style.display ='none';
+  document.getElementById('cur_position').innerHTML = "Getting geolocation . . .";
+  console.log("Getting geolocation . . .");
+  navigator.geolocation.getCurrentPosition(success, fail);  
 };
+
 
 var watchID = null;
 function clearWatch() { 
