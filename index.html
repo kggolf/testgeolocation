@@ -18,8 +18,8 @@ var map = document.getElementById('map');
   document.getElementById('cur_position').innerHTML = text;
   console.log(text);*/
   map.style.display ='block';
-  var mapwidth = 500; // a mungy compromise between the 2 sizes
-  var mapheight = 500; // since we can't get w / h dynamically
+  var mapwidth = 250; // a mungy compromise between the 2 sizes
+  var mapheight = 250; // since we can't get w / h dynamically
   map.src ="http://maps.googleapis.com/maps/api/staticmap?center=" + 
   pos.coords.latitude +"," + pos.coords.longitude + "&zoom=14&size=" + mapwidth + "x" + mapheight + "&maptype=roadmap&markers=color:green%7C" +
   pos.coords.latitude +"," + pos.coords.longitude + "&sensor=false";
@@ -33,7 +33,7 @@ var map = document.getElementById('map');
   navigator.geolocation.getCurrentPosition(success, fail);  
 };
 
-
+/*
 var watchID = null;
 function clearWatch() { 
 if (watchID !== null) {
@@ -80,6 +80,7 @@ var options = { frequency: 3000, maximumAge: 5000, timeout: 5000, enableHighAccu
 watchID = navigator.geolocation.watchPosition(wsuccess, wfail, options);
 }
 };
+*/
 </script>
 
 
