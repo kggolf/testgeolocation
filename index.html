@@ -7,15 +7,14 @@
 <link rel="styleSheet" href="index.css"/>
 <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
 
-
 <script type="text/javascript" charset="utf-8">
 
-var getCurrentPosition = 
-function() {
-var map = document.getElementById('map');
-var success = function(pos) { 
-var text = "<div>Latitude: " + pos.coords.latitude + "<br/>" + "Longitude: " + pos.coords.longitude + "<br/>" + "Accuracy: " + pos.coords.accuracy + "m<br/>" + "</div>";
 
+function getCurrentPosition() {
+var map = document.getElementById('map');
+
+function success(pos) { 
+var text = "<div>Latitude: " + pos.coords.latitude + "<br/>" + "Longitude: " + pos.coords.longitude + "<br/>" + "Accuracy: " + pos.coords.accuracy + "m<br/>" + "</div>";
 document.getElementById('cur_position').innerHTML = text;
 console.log(text);
 map.style.display ='block';
@@ -23,10 +22,10 @@ var mapwidth = 270; // a mungy compromise between the 2 sizes
 var mapheight = 210; // since we can't get w / h dynamically
 map.src ="http://maps.googleapis.com/maps/api/staticmap?center=" + 
 pos.coords.latitude +"," + pos.coords.longitude + "&zoom=14&size=" + mapwidth + "x" + mapheight + "&maptype=roadmap&markers=color:green%7C" +
-pos.coords.latitude +"," + pos.coords.longitude + "&sensor=false";};
+pos.coords.latitude +"," + pos.coords.longitude + "&sensor=false";
+};
 
-var fail = 
-function(error) {
+function fail(error) {
 document.getElementById('cur_position').innerHTML = "Error getting geolocation: " + error.code;console.log("Error getting geolocation: code=" + error.code + " message=" + error.message);};
 map.style.display ='none';
 document.getElementById('cur_position').innerHTML = "Getting geolocation . . .";
@@ -42,10 +41,9 @@ watchID = null;
 document.getElementById('cur_position').innerHTML = "";
 document.getElementById('map').style.display = 'none';
 }
-
 }
-varwsuccess = 
-function(pos) { 
+
+function varwsuccess(pos) { 
 var map = document.getElementById('map');
 document.getElementById('cur_position').innerHTML = "Watching geolocation . . .";
 map.style.display ='none';
@@ -58,21 +56,18 @@ var mapheight = 210; // since we can't get w / h dynamically
 map.src ="http://maps.googleapis.com/maps/api/staticmap?center=" + pos.coords.latitude +"," + pos.coords.longitude + "&zoom=13&size=" + mapwidth + "x" + mapheight + "&maptype=roadmap&markers=color:green%7C" +pos.coords.latitude +"," + pos.coords.longitude + "&sensor=false";
 };
 
-varwfail = 
-function(error) { 
-document.getElementById(
-'cur_position').innerHTML = "Error getting geolocation: " + error.code;
-console.log(
-"Error getting geolocation: code=" + error.code + " message=" + error.message);
+
+function varwfail(error) { 
+document.getElementById('cur_position').innerHTML = "Error getting geolocation: " + error.code;
+console.log("Error getting geolocation: code=" + error.code + " message=" + error.message);
 };
 
-var toggleWatchPosition = 
-function() { 
+
+function toggleWatchPosition() { 
 if (watchID) {
 console.log(
 "Stopped watching position");
-clearWatch();
-// sets watchID = null;
+clearWatch();// sets watchID = null;
 }
 else { 
 document.getElementById(
@@ -90,11 +85,7 @@ watchID = navigator.geolocation.watchPosition(wsuccess, wfail, options);
 </head>
 <body>
 <h2>Geolocation</h2>
-<blockquote>
-<p>The <code>geolocation</code> object provides access to the device's GPS sensor.</p>
-</blockquote>
-<h4 class="help"><b>Toggle</b> to stop/start geolocation watch.
-<br/><b>Get Current</b> for one-time geolocation reading.</h4>
+
 <a class="btn deux" onclick="toggleWatchPosition();">Toggle</a>
 <a class="btn deux" onclick="getCurrentPosition();">Get Current</a>
 <div class="result-block">
